@@ -1,0 +1,42 @@
+# ---------------------------------------------------------------
+# 白名单式忽略：本工作目录混有大量测试产物（Edge 用户数据、MSVC
+# 中间件、备份 exe）与私人笔记，因此默认全部忽略，只放行源码。
+# 新增文件若需入库，请在下面显式加一行 !路径。
+# ---------------------------------------------------------------
+*
+
+# 仓库自身
+!/.gitignore
+!/.gitattributes
+!/README.md
+!/LICENSE
+!/THIRD-PARTY.md
+
+# 应用本体（单文件 HTML + 图标）
+!/CodeMap-source/
+!CodeMap-source/CodeMap.html
+!CodeMap-source/CodeMap.ico
+
+# 宿主源码（build/ 其余内容为 MSVC 中间件与 46MB 的 WebView2 SDK，不入库；
+# CodeMap.rc 与 CodeMap.manifest 由 build-exe.py 生成，也不入库）
+!/build/
+!build/CodeMap.cpp
+!build/CodeMap.h
+
+# 构建脚本
+!/build-exe.py
+
+# 多语言与字体子集化工具链
+!/i18n-tools/
+!i18n-tools/**
+
+# 编译缓存不入库（必须在上面 i18n-tools 放行之后，后写的规则优先）
+__pycache__/
+*.pyc
+
+# 文档与截图
+!/docs/
+!docs/**
+
+# Nothing 风格美术演示页
+!/Nothing-Art-Demo.html

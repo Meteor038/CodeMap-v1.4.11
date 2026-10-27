@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NOTHING / CODEMAP — Art Direction</title>
+<style>
+:root{
+  --red:#D71921; --g1:#8f8f8b; --g2:#2b2b2b;
+  --bg:#000000; --fg:#F5F5F3; --line:rgba(255,255,255,.15);
+  --tile:#0d0d0d; --tile-b:rgba(255,255,255,.08);
+}
+html[data-theme="light"]{
+  --bg:#F5F5F3; --fg:#0a0a0a; --line:rgba(0,0,0,.16);
+  --tile:#eceae6; --tile-b:rgba(0,0,0,.1); --g1:#6d6d69; --g2:#c9c7c3;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{
+  background:var(--bg); color:var(--fg);
+  font-family:"SF Mono",ui-monospace,"Cascadia Mono",Consolas,"Courier New",monospace;
+  -webkit-font-smoothing:antialiased;
+  transition:background .28s ease,color .28s ease;
+  overflow-x:hidden;
+}
+.wrap{max-width:1160px;margin:0 auto;padding:30px 26px 70px}
+
+/* ---------- 顶部 ---------- */
+.hd{display:flex;align-items:center;justify-content:space-between;gap:18px;
+    border-bottom:1px solid var(--line);padding-bottom:13px}
+.micro{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--g1)}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--red);display:inline-block;
+     margin-right:7px;vertical-align:middle;animation:pulse 2.4s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.25}}
+.hd .r{display:flex;align-items:center;gap:14px}
+.btn{font:inherit;font-size:10px;letter-spacing:.16em;text-transform:uppercase;
+     color:var(--fg);background:transparent;border:1px solid var(--line);
+     padding:6px 11px;border-radius:999px;cursor:pointer;transition:.18s}
+.btn:hover{border-color:var(--red);color:var(--red)}
+
+/* ---------- 点阵字（用点阵遮罩模拟 Nothing 的 dot-matrix 字形） ---------- */
+.dm{
+  -webkit-mask-image:radial-gradient(circle at 50% 50%,#000 41%,transparent 43%);
+  -webkit-mask-size:5px 5px;
+  mask-image:radial-gradient(circle at 50% 50%,#000 41%,transparent 43%);
+  mask-size:5px 5px;
+  font-weight:700;letter-spacing:-.025em;line-height:.9;
+}
+h1{font-size:clamp(52px,10.5vw,138px);margin:30px 0 6px}
+h1 .red{-webkit-text-fill-color:transparent;background:var(--red);
+        -webkit-background-clip:text;background-clip:text}
+.tag{display:flex;flex-wrap:wrap;gap:10px 26px;align-items:baseline;margin-top:2px}
+.tag .t{font-size:clamp(13px,1.6vw,17px);letter-spacing:.34em;text-transform:uppercase;color:var(--g1)}
+.hero{border-bottom:1px solid var(--line);padding-bottom:26px}
+
+/* ---------- 跑马灯 ---------- */
+.marq{border-bottom:1px solid var(--line);overflow:hidden;margin:0 -26px;padding:9px 0}
+.marq .in{display:flex;gap:0;white-space:nowrap;animation:mv 26s linear infinite;width:max-content}
+.marq span{font-size:10px;letter-spacing:.26em;text-transform:uppercase;color:var(--g1);padding:0 18px}
+.marq b{color:var(--red);font-weight:400}
+@keyframes mv{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ---------- 区块 ---------- */
+.sec{padding:34px 0;border-bottom:1px solid var(--line)}
+.shead{display:flex;align-items:baseline;gap:14px;margin-bottom:20px}
+.shead .n{font-size:10px;letter-spacing:.2em;color:var(--red)}
+.shead h2{font-size:13px;letter-spacing:.24em;text-transform:uppercase;font-weight:400}
+.shead .ln{flex:1;height:1px;background:var(--line)}
+.shead .c{font-size:10px;letter-spacing:.16em;color:var(--g1)}
+
+/* 色板 */
+.pal{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.sw{border:1px solid var(--line);border-radius:3px;overflow:hidden}
+.sw .c{height:112px;position:relative}
+.sw .c::after{content:"";position:absolute;inset:0;
+  background:radial-gradient(circle,rgba(0,0,0,.14) 1px,transparent 1px);
+  background-size:5px 5px;opacity:.5}
+.sw .m{display:flex;justify-content:space-between;padding:9px 10px;font-size:10px;
+       letter-spacing:.1em;color:var(--g1);border-top:1px solid var(--line)}
+.sw .m b{color:var(--fg);font-weight:400}
+
+/* 字体样张 */
+.spec{border:1px solid var(--line);border-radius:3px;padding:20px 18px}
+.spec .row{display:flex;align-items:baseline;justify-content:space-between;gap:16px;
+           padding:12px 0;border-bottom:1px dashed var(--line)}
+.spec .row:last-child{border-bottom:none}
+.spec .s1{font-size:clamp(28px,4.4vw,46px);letter-spacing:-.01em}
+.spec .s2{font-size:20px;letter-spacing:.02em}
+.spec .s3{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--g1)}
+
+/* 字形网格 */
+.grid{display:grid;grid-template-columns:repeat(6,1fr);gap:10px}
+.tile{aspect-ratio:1;border:1px solid var(--tile-b);background:var(--tile);
+      border-radius:3px;display:grid;place-items:center;cursor:pointer;
+      transition:border-color .18s,transform .18s;position:relative;overflow:hidden}
+.tile:hover{border-color:var(--red);transform:translateY(-2px)}
+.tile canvas{width:74%;height:74%;display:block}
+.tile .cap{position:absolute;left:6px;bottom:4px;font-size:8.5px;letter-spacing:.14em;color:var(--g1)}
+.tile.hit{border-color:var(--red)}
+.tile.hit .cap{color:var(--red)}
+
+/* 应用示例：迷你地图 */
+.applied{border:1px solid var(--line);border-radius:3px;overflow:hidden}
+.applied .bar{display:flex;align-items:center;gap:10px;padding:8px 11px;
+              border-bottom:1px solid var(--line);font-size:10px;letter-spacing:.14em;color:var(--g1)}
+.applied .bar b{color:var(--fg);font-weight:400}
+.mini{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:26px;gap:3px;padding:11px}
+.mini i{background:#141414;border-radius:2px;display:block}
+html[data-theme="light"] .mini i{background:#e4e2de}
+.mini i.a{background:var(--red)}
+.mini i.b{background:#3a3a3a}
+html[data-theme="light"] .mini i.b{background:#cfcdc8}
+
+/* 底部 */
+.ft{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;padding-top:26px}
+.ft .micro{line-height:1.9}
+.ft .big{font-size:clamp(22px,3.2vw,34px);letter-spacing:-.01em}
+
+@media (max-width:820px){
+  .pal{grid-template-columns:repeat(2,1fr)}
+  .grid{grid-template-columns:repeat(3,1fr)}
+  .wrap{padding:22px 16px 50px}
+  .marq{margin:0 -16px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- 顶部 -->
+  <div class="hd">
+    <div class="micro"><span class="dot"></span>NOTHING / ART DIRECTION</div>
+    <div class="r">
+      <span class="micro">CODEMAP · v1.4.4</span>
+      <button class="btn" id="inv">INVERT&nbsp;&nbsp;[I]</button>
+    </div>
+  </div>
+
+  <!-- 主视觉 -->
+  <div class="hero">
+    <h1 class="dm">CODE<span class="red">MAP</span></h1>
+    <div class="tag">
+      <span class="t">EVERY FILE HAS A PLACE</span>
+      <span class="micro">2026 / 点阵 · 单色 · 信号红</span>
+    </div>
+  </div>
+
+  <!-- 跑马灯 -->
+  <div class="marq">
+    <div class="in" id="mq"></div>
+  </div>
+
+  <!-- 01 色彩 -->
+  <section class="sec">
+    <div class="shead"><span class="n">01</span><h2>Signal</h2><span class="ln"></span><span class="c">色彩</span></div>
+    <div class="pal">
+      <div class="sw"><div class="c" style="background:#000000"></div><div class="m"><b>BLACK</b><span>#000000</span></div></div>
+      <div class="sw"><div class="c" style="background:#F5F5F3"></div><div class="m"><b>WHITE</b><span>#F5F5F3</span></div></div>
+      <div class="sw"><div class="c" style="background:#D71921"></div><div class="m"><b>RED</b><span>#D71921</span></div></div>
+      <div class="sw"><div class="c" style="background:#2B2B2B"></div><div class="m"><b>GRAPHITE</b><span>#2B2B2B</span></div></div>
+    </div>
+    <p class="micro" style="margin-top:14px;line-height:1.9">
+      主色只有黑白两值；红色是唯一的强调色，仅用于「当前状态 / 关键数据 / 品牌点」，
+      使用面积控制在画面 3% 以内。
+    </p>
+  </section>
+
+  <!-- 02 字体 -->
+  <section class="sec">
+    <div class="shead"><span class="n">02</span><h2>Type</h2><span class="ln"></span><span class="c">点阵与等宽</span></div>
+    <div class="spec">
+      <div class="row"><span class="s1 dm">DOT MATRIX</span><span class="micro">点阵标题</span></div>
+      <div class="row"><span class="s2">0123456789 — AaBbCc</span><span class="micro">等宽正文</span></div>
+      <div class="row"><span class="s3">MICRO LABEL / 10PX / 0.2EM</span><span class="micro">技术标注</span></div>
+    </div>
+  </section>
+
+  <!-- 03 字形 -->
+  <section class="sec">
+    <div class="shead"><span class="n">03</span><h2>Glyph</h2><span class="ln"></span><span class="c">点阵图形 · 点击切换</span></div>
+    <div class="grid" id="grid"></div>
+  </section>
+
+  <!-- 04 应用 -->
+  <section class="sec" style="border-bottom:none">
+    <div class="shead"><span class="n">04</span><h2>Applied</h2><span class="ln"></span><span class="c">落到界面上</span></div>
+    <div class="applied">
+      <div class="bar"><b>E:\PROJECT</b><span>·</span><span>128,406 FILES</span><span>·</span><span>METRIC: SIZE</span></div>
+      <div class="mini" id="mini"></div>
+    </div>
+    <p class="micro" style="margin-top:14px;line-height:1.9">
+      地图本体保持单色阶：色块用明度区分层级，红色只标记选中项。
+      文字一律等宽，数字用点阵感更强的字重压住画面。
+    </p>
+  </section>
+
+  <!-- 底部 -->
+  <div class="ft">
+    <div>
+      <div class="big dm">NOTHING<br>BUT A MAP.</div>
+    </div>
+    <div class="micro" style="text-align:right">
+      DESIGNED IN THE NOTHING LANGUAGE<br>
+      CODEMAP · 2026 · SINGLE FILE<br>
+      <span style="color:var(--red)">■</span> SIGNAL RED / 3%
+    </div>
+  </div>
+
+</div>
+
+<script>
+/* ---------- 跑马灯：内容重复两遍实现无缝 ---------- */
+(function(){
+  var t = ['点阵 DOT MATRIX','单色 MONOCHROME','信号红 SIGNAL RED','技术网格 GRID',
+           '微排版 MICRO TYPE','零装饰 NO ORNAMENT','信息优先 INFO FIRST'];
+  var one = t.map(function(s){ return '<span>' + s + '</span><b>·</b>'; }).join('');
+  document.getElementById('mq').innerHTML = one + one;
+})();
+
+/* ---------- 字形网格：每个 tile 画一张点阵图 ---------- */
+(function(){
+  var grid = document.getElementById('grid');
+  var N = 12, caps = ['DOT','RING','WAVE','DIAG','PLUS','CHECK','ARC','GRID'];
+  function draw(cv, idx){
+    var r = cv.getBoundingClientRect();
+    var w = Math.max(48, Math.round(r.width)), h = Math.max(48, Math.round(r.height));
+    var dpr = window.devicePixelRatio || 1;
+    cv.width = Math.round(w * dpr); cv.height = Math.round(h * dpr);
+    var ctx = cv.getContext('2d');
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.clearRect(0, 0, w, h);
+    var cs = getComputedStyle(document.documentElement);
+    var red = (cs.getPropertyValue('--red') || '#D71921').trim();
+    var fg  = (cs.getPropertyValue('--fg') || '#F5F5F3').trim();
+    var cols = 11, rows = 11, pad = 7;
+    var gw = (w - pad * 2) / (cols - 1), gh = (h - pad * 2) / (rows - 1);
+    var kind = idx % 8;
+    var accentCell = (idx % 4 === 1) ? [5, 5] : null;
+    for(var y = 0; y < rows; y++){
+      for(var x = 0; x < cols; x++){
+        var cx = x - (cols - 1) / 2, cy = y - (rows - 1) / 2;
+        var d  = Math.sqrt(cx * cx + cy * cy);
+        var on = false, rr = 2.1;
+        if(kind === 0)      on = d <= 2.1;                          /* 实心圆 */
+        else if(kind === 1) on = Math.abs(d - 3.4) < 0.62;           /* 圆环 */
+        else if(kind === 2) on = Math.abs(Math.sin(x * 0.62) * 3.2) < Math.abs(cy) + .2; /* 横波 */
+        else if(kind === 3) on = Math.abs(Math.abs(cx) - Math.abs(cy)) < 0.6; /* X */
+        else if(kind === 4) on = (Math.abs(cx) < .6 || Math.abs(cy) < .6);    /* 十字 */
+        else if(kind === 5) on = ((x + y) % 2 === 0) && d <= 4.2;             /* 棋盘 */
+        else if(kind === 6) on = (d >= 3.2 && d <= 4.6) || d < 0.6;           /* 同心 */
+        else                on = (x === 0 || y === 0 || x === cols - 1 || y === rows - 1);
+        if(!on) continue;
+        var hi = accentCell && x === accentCell[0] && y === accentCell[1];
+        ctx.beginPath();
+        ctx.arc(pad + x * gw, pad + y * gh, hi ? 3.1 : rr, 0, Math.PI * 2);
+        ctx.fillStyle = hi ? red : fg;
+        ctx.globalAlpha = hi ? 1 : .88;
+        ctx.fill();
+      }
+    }
+    ctx.globalAlpha = 1;
+  }
+  for(var i = 0; i < N; i++){
+    var d = document.createElement('div');
+    d.className = 'tile';
+    d.innerHTML = '<canvas></canvas><span class="cap">' + String(i + 1).padStart(2, '0') + ' '
+      + caps[i % caps.length] + '</span>';
+    grid.appendChild(d);
+    (function(tile, k){
+      var cv = tile.querySelector('canvas');
+      setTimeout(function(){ draw(cv, k); }, 30);
+      tile.addEventListener('click', function(){
+        var hit = tile.classList.toggle('hit');
+        tile.querySelector('.cap').textContent =
+          (hit ? '◉ ' : '') + String(k + 1).padStart(2, '0') + ' ' + caps[k % caps.length];
+      });
+    })(d, i);
+  }
+  /* 主题切换 / 窗口尺寸变化后重绘（颜色与尺寸都取自运行时） */
+  window.__redrawGlyphs = function(){
+    document.querySelectorAll('.tile').forEach(function(t, k){ draw(t.querySelector('canvas'), k); });
+  };
+  var tm = null;
+  window.addEventListener('resize', function(){
+    clearTimeout(tm); tm = setTimeout(window.__redrawGlyphs, 120);
+  });
+})();
+
+/* ---------- 迷你地图色块 ---------- */
+(function(){
+  var mini = document.getElementById('mini'), cells = [];
+  var seeds = [7,3,2,9,4,1,6,2,3,5,2,1, 4,2,1,6,3,1,2,1,1,3,1,1,
+               3,1,1,4,2,1,1,1,1,2,1,1, 2,1,1,2,1,1,1,1,1,1,1,1];
+  for(var i = 0; i < 48; i++){
+    var el = document.createElement('i');
+    var r = Math.random();
+    if(i === 14) el.className = 'a';
+    else if(r > .72) el.className = 'b';
+    mini.appendChild(el);
+  }
+})();
+
+/* ---------- 主题反色 ---------- */
+(function(){
+  var root = document.documentElement, btn = document.getElementById('inv');
+  function toggle(){
+    var light = root.getAttribute('data-theme') === 'light';
+    root.setAttribute('data-theme', light ? 'dark' : 'light');
+    if(window.__redrawGlyphs) setTimeout(window.__redrawGlyphs, 60);
+  }
+  btn.addEventListener('click', toggle);
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'i' || e.key === 'I') toggle();
+  });
+})();
+</script>
+</body>
+</html>

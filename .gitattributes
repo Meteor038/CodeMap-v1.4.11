@@ -1,0 +1,13 @@
+# 统一换行符：仓库内一律 LF，检出时按平台还原（Windows 上为 CRLF）
+* text=auto eol=lf
+
+# 二进制文件不做换行转换与 diff
+*.exe   binary
+*.ico   binary
+*.png   binary
+*.woff2 binary
+
+# 语言判定（影响 GitHub 语言统计与高亮）
+*.html linguist-detectable=true
+*.cpp  linguist-detectable=true
+*.py   linguist-detectable=true
