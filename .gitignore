@@ -10,6 +10,7 @@
 !/.gitattributes
 !/README.md
 !/LICENSE
+!/OFL.txt
 !/THIRD-PARTY.md
 
 # 应用本体（单文件 HTML + 图标）
@@ -21,7 +22,6 @@
 # CodeMap.rc 与 CodeMap.manifest 由 build-exe.py 生成，也不入库）
 !/build/
 !build/CodeMap.cpp
-!build/CodeMap.h
 
 # 构建脚本
 !/build-exe.py
@@ -37,6 +37,3 @@ __pycache__/
 # 文档与截图
 !/docs/
 !docs/**
-
-# Nothing 风格美术演示页
-!/Nothing-Art-Demo.html

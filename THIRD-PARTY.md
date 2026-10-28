@@ -34,6 +34,7 @@ CodeMap 的界面使用像素字体渲染。为保持单文件形态，字体以
 | `CodeMap-source/CodeMap.html` | 四套字体的 base64 WOFF2 子集（内嵌，不可单独提取为字体文件使用） |
 | `i18n-tools/font-subset/FusionPixel12TW.woff2` | 繁体中文子集（独立文件，供重新生成使用） |
 | `i18n-tools/font-subset/FusionPixel12JA.woff2` | 日文子集（同上） |
+| `OFL.txt` | 上述字体的版权声明与 SIL OFL 1.1 许可全文 |
 
 ### 1.2 其他素材
 
@@ -90,14 +91,12 @@ SIL Open Font License 1.1 允许字体被**嵌入文档或软件**并在满足�
 
 **本项目已采取的措施**
 
-- 在本文档中列明字体的名称、上游项目与许可，作为版权与许可声明的载体；
+- 仓库根目录的 [`OFL.txt`](OFL.txt) 收录两款字体的版权声明与 SIL OFL 1.1 许可全文；
+- 本文档 1.1 节列明字体的名称、上游项目与许可，作为索引；
 - 子集化未改动字形轮廓；
 - 字体仅用于界面渲染，未作为独立商品分发。
 
-**完整的许可文本**请见上游仓库中的 `OFL.txt`：
-<https://github.com/TakWolf/fusion-pixel-font> 与 <https://github.com/googlefonts/doto>。
-
-> 若你计划**再分发本项目的 exe 或内嵌字体的页面**，建议一并附带上述 OFL 文本，以满足条款 1 的形式要求。
+> 再分发本项目的 exe 或内嵌字体的页面时，请一并附带 `OFL.txt`，以满足条款 2 的形式要求。
 
 ### 4.3 构建期依赖
 

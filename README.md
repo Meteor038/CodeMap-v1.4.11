@@ -3,6 +3,7 @@
 > 把任意本地代码目录渲染成一张**可下钻的矩形地图**：面积代表体量，颜色代表语言。
 
 <p>
+  <a href="https://github.com/Meteor038/codemap/releases/latest"><img alt="Download" src="https://img.shields.io/badge/download-CodeMap.exe-e63225"></a>
   <img alt="Platform" src="https://img.shields.io/badge/platform-Windows%2010%20%2F%2011%20x64-0078D4">
   <img alt="Version" src="https://img.shields.io/badge/version-1.4.11-black">
   <img alt="Size" src="https://img.shields.io/badge/exe-0.87%20MB-2ea44f">
@@ -64,7 +65,9 @@ CodeMap 把一个目录**一次性铺成一张地图**：
 
 ## 3. 下载与运行
 
-到本仓库的 **Releases** 页面下载 `CodeMap.exe`（约 0.87 MB），**双击即可，免安装**。
+[**下载 CodeMap.exe**](https://github.com/Meteor038/codemap/releases/latest)（约 0.87 MB）—— **双击即可运行，免安装**。
+
+历史版本与更新记录见 [Releases](https://github.com/Meteor038/codemap/releases)。
 
 | 项目 | 要求 |
 |---|---|
@@ -92,6 +95,7 @@ CodeMap 把一个目录**一次性铺成一张地图**：
 |---|---|
 | **[docs/USAGE.md](docs/USAGE.md)** | **完整使用手册**：功能逐项说明、搜索语法全表、预览格式矩阵、参数详解、故障排查 |
 | [THIRD-PARTY.md](THIRD-PARTY.md) | 第三方组件与许可声明（含内嵌字体） |
+| [OFL.txt](OFL.txt) | 内嵌字体的 SIL Open Font License 1.1 全文与版权声明 |
 | [LICENSE](LICENSE) | MIT 许可证 |
 
 ## 6. 从源码构建
@@ -137,7 +141,7 @@ i18n-tools/         词典生成与像素字体子集化工具（维护用）
 docs/
   USAGE.md          完整使用手册
   screenshot.png    界面截图
-Nothing-Art-Demo.html   Nothing 设计语言的美术演示页（独立单页，与主程序无关）
+  Nothing-Art-Demo.html  Nothing 设计语言的美术演示页（独立单页，与主程序无关）
 ```
 
 ## 8. 技术实现
@@ -180,7 +184,7 @@ Nothing-Art-Demo.html   Nothing 设计语言的美术演示页（独立单页，
 ## 11. 许可
 
 代码以 [MIT 许可证](LICENSE) 发布。
-内嵌字体属 OFL-1.1 许可的第三方资源，详见 [THIRD-PARTY.md](THIRD-PARTY.md)。
+内嵌字体属 OFL-1.1 许可的第三方资源：版权声明与许可全文见 [OFL.txt](OFL.txt)，组件清单见 [THIRD-PARTY.md](THIRD-PARTY.md)。
 
 ## 12. 致谢
 
